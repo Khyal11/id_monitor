@@ -1,3 +1,2 @@
 Pyrogram==2.0.106
 gunicorn==21.2.0
-TgCrypto==1.2.5
