@@ -11,13 +11,13 @@
     ],
     "env": {
       "BOT_TOKEN": {
-        "description": "6270738616:AAEz-0xD86vm1uYFv42bidqU8HOd69OpvPg"
+        "description": ""
       },
       "API_ID": {
-        "description": "28346852"
+        "description": ""
       },
       "API_HASH": {
-        "description": "a370d8cc54c5113d311d99d847962f02"
+        "description": ""
       },
         "UPDATE_CHANNEL": {
             "description": "miyu942",
