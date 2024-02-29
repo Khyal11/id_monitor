@@ -5,9 +5,9 @@ from config import API_ID, API_HASH, BOT_TOKEN
 from added_users import load_added_users, save_added_users
 
 
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+# API_ID = int(os.environ.get("API_ID"))
+# API_HASH = os.environ.get("API_HASH")
+# BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 
 Telegram = Client(
