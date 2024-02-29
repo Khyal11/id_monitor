@@ -1,2 +1,2 @@
-Pyrogram==2.0.106
-
+python-3.10.7
+gunicorn== 21.2.0
