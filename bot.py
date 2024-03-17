@@ -4,9 +4,9 @@ from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN
 from added_users import load_added_users, save_added_users
 
-API_ID = os.environ.get("API_ID")
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+# API_ID = os.environ.get("API_ID")
+# API_HASH = os.environ.get("API_HASH")
+# BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 Telegram = Client(
     "Telegram",
@@ -48,7 +48,7 @@ async def monitor_usernames():
 
                 except Exception as user_error:
                     print(f"Error checking username for user {username}: {str(user_error)}")
-                    if "USERNAME_NOT_OCCUPIED" in str(user_error):
+                    if "USERNAME_NOT_OCCUPIED" in str(user_error) and username in added_users:
                         del added_users[username]
 
             save_added_users(added_users)  # Save the data after the loop
