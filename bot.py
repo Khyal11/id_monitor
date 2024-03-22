@@ -103,13 +103,21 @@ async def add_user(_, update):
 
 @Telegram.on_message(filters.private & filters.command(["showlist"]))
 async def show_user_list(_, update):
-    if added_users:
-        user_list_text = "\n".join(
-            [f"@{added_users[username]['last_known_username']}: {added_users[username]['user_id']})"
-             for username in added_users])
+    temp_user_list = []  # Create a temporary list to store usernames
+    for username, user_info in added_users.items():
+        try:
+            user = await Telegram.get_chat(username)
+            current_username = user.username if user.username else f"user_{user.id}"
+            temp_user_list.append(f"@{current_username}: {user.id}")
+        except Exception as e:
+            print(f"Error getting user info for {username}: {e}")
+
+    if temp_user_list:
+        user_list_text = "\n".join(temp_user_list)
         await update.reply_text(f"List of added users:\n{user_list_text}")
     else:
         await update.reply_text("No users added. Use /adduser to add users.")
+
 
 @Telegram.on_message(filters.private & filters.command(["getid"]))
 async def get_user_id(_, update):
