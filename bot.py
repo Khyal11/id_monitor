@@ -58,11 +58,6 @@ async def monitor_usernames():
             save_added_users(added_users)  # Save the data after the loop
             await asyncio.sleep(60)
 
-    except Exception as e:
-        await send_notification("1716718736", f"Error during monitoring: {str(e)}")
-        save_added_users(added_users)
-        await asyncio.sleep(10)
-
 
     except Exception as e:
         await send_notification("1716718736", f"Error during monitoring: {str(e)}")
