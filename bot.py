@@ -50,13 +50,15 @@ async def monitor_usernames():
 
                 except Exception as user_error:
                     print(f"Error checking username for user {username}: {str(user_error)}")
-                    if "USERNAME_NOT_OCCUPIED" in str(user_error) and username in added_users:
-                        await send_notification("1716718736",
-                                                f"Username @{username} not found.")
-                        added_users[username]["not_found"] = True  # Set not_found flag
+                    # Remove the part that sends the notification about username not found
 
             save_added_users(added_users)  # Save the data after the loop
             await asyncio.sleep(60)
+    except Exception as e:
+        await send_notification("1716718736", f"Error during monitoring: {str(e)}")
+        save_added_users(added_users)
+        await asyncio.sleep(10)
+
 
 
     except Exception as e:
